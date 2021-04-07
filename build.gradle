@@ -1,0 +1,30 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.trial'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+def classesJava = "${project.buildDir}/classes/java/main/"
+def javasRoot = "${rootProject.rootDir}/src/main/java"
+def testClassesJava = "${project.buildDir}/classes/java/test"
+def testJavaRoot = "${rootProject.rootDir}/src/test/java"
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	compile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.4'
+    testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.6.4', ext: 'pom'
+}
+
+test {
+	useJUnitPlatform()
+}
